@@ -121,6 +121,7 @@ footer {
     background-color: #2c3e50;
     color: white;
     margin-top: 2rem;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -141,3 +142,16 @@ footer {
         font-size: 1rem;
     }
 }
+.acerca{
+   color: white;
+  background-color: #0066cc;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+}
+
+.acerca:hover {
+  background-color: #3385ff;
+}   

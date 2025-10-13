@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colegio Miguel Grau - Registro de Usuario</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
+    <header><!--navegacion-->
         <h1>Bienvenido al Colegio MIguel Grau</h1>
+        <nav>
+            <a href="acercade.html" class="acerca">Acerca del colegio</a>
+        </nav>
         <p>Selecciona tu rol para continuar con el registro.</p>
     </header>
-    
-    <main>
+
+    <main><!--Contenido principal-->
         <div class="contenedor-seleccion">
             <button onclick="window.location.href='registro_profesor.html'" class="btn-rol"> Profesor</button>
             <button onclick="window.location.href='registro_estudiante.html'" class="btn-rol"> Estudiante</button>
         </div>
     </main>
-    
+<!--piede pagina-->
     <footer>
         <p>&copy; 2023 Colegio Miguel Grau. Todos los derechos reservados.</p>
     </footer>
 </body>
+
 </html>
