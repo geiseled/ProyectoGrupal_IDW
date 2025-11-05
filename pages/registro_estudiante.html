@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Estudiante - Colegio MIguel Grau</title>
+    <title>Registro de Estudiante - Colegio Miguel Grau</title>
     <!--Estilos personalizados-->
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
@@ -14,10 +14,12 @@
 <body>
     <!--header inyectado-->
     <div id="header-placeholder"></div>
+
     <main class="contenido-principal layout-landing">
+        <h2 class="titulo-formulario">Registro de Nuevo Estudiante</h2>
+
         <!--formulario-->
-        <form id="formEstudiante" class="formulario"
-            onsubmit="alert('¡Registro de estudiante enviado! (Simulación)'); return false;">
+        <form id="formEstudiante" class="formulario">
             <label for="nombres">Nombres:</label>
             <input type="text" id="nombres" name="nombres" required>
 
@@ -38,10 +40,16 @@
 
             <button type="submit" class="btn-enviar">Crear Cuenta</button>
         </form>
+
+        <div class="acciones-formulario">
+            <a href="../index.html" class="btn-volver">← Volver al Inicio</a>
+        </div>
     </main>
+
     <!--footer inyectado-->
     <div id="footer-placeholder"></div>
-    <script src="/javascript/control.js"></script>
+
+    <script src="../javascript/form_registro_estudiantes.js"></script>
 </body>
 
 </html>

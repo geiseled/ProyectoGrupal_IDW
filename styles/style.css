@@ -1,8 +1,10 @@
 /* --- Estilos generales --- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 html {
     height: 100%;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -12,20 +14,24 @@ body {
     font-size: 16px;
     background-color: #e8f0e8;
 }
+
 h2 {
     font-size: 2rem;
     color: #333;
 }
+
 .contenido-principal {
     flex-grow: 1;
     padding: 20px;
 }
+
 .contenedor-seleccion {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     align-items: center;
 }
+
 .btn-rol {
     background-color: #3498db;
     color: white;
@@ -38,6 +44,7 @@ h2 {
     width: 100%;
     max-width: 300px;
 }
+
 .btn-rol:hover {
     background-color: #2980b9;
 }
@@ -55,6 +62,7 @@ h2 {
     font-weight: bold;
     color: #2c3e50;
 }
+
 .formulario input {
     width: 100%;
     padding: 0.8rem;
@@ -63,11 +71,13 @@ h2 {
     border-radius: 5px;
     font-size: 1rem;
 }
+
 .formulario input:focus {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
+
 .btn-enviar {
     background-color: #27ae60;
     color: white;
@@ -79,6 +89,7 @@ h2 {
     width: 100%;
     transition: background-color 0.3s;
 }
+
 .btn-enviar:hover {
     background-color: #229954;
 }
@@ -90,6 +101,7 @@ h2 {
     text-decoration: none;
     font-weight: bold;
 }
+
 .btn-volver:hover {
     text-decoration: underline;
 }
@@ -111,4 +123,30 @@ h2 {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
+}
+
+/*--- reglas basicas de formulario estudiantes ---*/
+.titulo-formulario {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.acciones-formulario {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.btn-volver {
+    background-color: #555;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #333;
 }
