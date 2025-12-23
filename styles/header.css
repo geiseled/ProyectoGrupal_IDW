@@ -1,4 +1,5 @@
-/* --- Estilos del Header --- */
+/* ESTILOS DEL HEADER CON NAVEGACION MEJORADA */
+
 .main-header {
     background-color: #fdfdfb;
     padding: 15px 40px;
@@ -8,28 +9,119 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
+.header-index {
+    color: #006442;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header-index:hover {
+    color: #004d33;
+}
+
+/* Navegación principal */
 .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .main-nav a,
-.header-index {
+.dropdown-toggle {
     color: #333;
     text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 12px 18px;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 10px 18px;
     border-radius: 6px;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: block;
+    cursor: pointer;
 }
-.main-nav a:hover {
+
+.main-nav a:hover,
+.dropdown-toggle:hover {
     color: #006442;
     background-color: #e8f5e9;
+}
+
+/* Dropdown menu */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+    list-style: none;
+    padding: 8px 0;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 12px 20px;
+    border-radius: 0;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f8f0;
+    color: #006442;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .main-nav a,
+    .dropdown-toggle {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        margin-top: 5px;
+        display: none;
+    }
+
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown.active .dropdown-menu {
+        display: block;
+    }
 }

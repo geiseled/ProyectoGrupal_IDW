@@ -106,7 +106,7 @@ def registro_profesor():
             INSERT INTO usuarios (id, nombres, apellidos, dni, correo, contrasena, tipo)
             VALUES (%s, %s, %s, %s, %s, %s, 'profesor')
         """, (datos['id'], datos['nombres'], datos['apellidos'], 
-              datos['dni'], datos['correo'], hash_contrasena))
+            datos['dni'], datos['correo'], hash_contrasena))
         
         # Insertar en tabla profesores
         cur.execute("""
@@ -146,7 +146,7 @@ def registro_estudiante():
         # Verificar ID y correo únicos
         cur = mysql.connection.cursor()
         cur.execute("SELECT id FROM usuarios WHERE id = %s OR correo = %s", 
-                   (datos['id'], datos['correo']))
+                (datos['id'], datos['correo']))
         if cur.fetchone():
             return jsonify({'exito': False, 'mensaje': 'ID o correo ya registrado'}), 400
         
@@ -158,7 +158,7 @@ def registro_estudiante():
             INSERT INTO usuarios (id, nombres, apellidos, dni, correo, contrasena, tipo)
             VALUES (%s, %s, %s, %s, %s, %s, 'estudiante')
         """, (datos['id'], datos['nombres'], datos['apellidos'], 
-              datos['dni'], datos['correo'], hash_contrasena))
+            datos['dni'], datos['correo'], hash_contrasena))
         
         # Insertar en tabla estudiantes
         cur.execute("""
@@ -247,11 +247,11 @@ def crear_tarea():
         cur = mysql.connection.cursor()
         cur.execute("""
             INSERT INTO tareas (titulo, descripcion, curso, tipo, fecha_entrega, 
-                              puntos, profesor_id, estado)
+                            puntos, profesor_id, estado)
             VALUES (%s, %s, %s, %s, %s, %s, %s, 'activa')
         """, (datos['titulo'], datos['descripcion'], datos['curso'],
-              datos.get('tipo', 'tarea'), datos['fechaEntrega'], 
-              datos.get('puntos', 20), payload['usuario_id']))
+            datos.get('tipo', 'tarea'), datos['fechaEntrega'], 
+            datos.get('puntos', 20), payload['usuario_id']))
         
         mysql.connection.commit()
         tarea_id = cur.lastrowid
@@ -282,8 +282,8 @@ def obtener_tareas_profesor():
         cur = mysql.connection.cursor()
         cur.execute("""
             SELECT t.*, 
-                   COUNT(e.id) as total_entregas,
-                   COUNT(CASE WHEN e.nota IS NOT NULL THEN 1 END) as calificadas
+                COUNT(e.id) as total_entregas,
+                COUNT(CASE WHEN e.nota IS NOT NULL THEN 1 END) as calificadas
             FROM tareas t
             LEFT JOIN entregas e ON t.id = e.tarea_id
             WHERE t.profesor_id = %s
@@ -377,10 +377,10 @@ def asignar_calificacion():
             # Crear nueva entrega
             cur.execute("""
                 INSERT INTO entregas (tarea_id, estudiante_id, nota, comentario, 
-                                     estado, fecha_calificacion)
+                                    estado, fecha_calificacion)
                 VALUES (%s, %s, %s, %s, 'calificada', NOW())
             """, (datos['tarea_id'], datos['estudiante_id'], 
-                  nota, datos.get('comentario', '')))
+                nota, datos.get('comentario', '')))
         
         mysql.connection.commit()
         cur.close()
@@ -411,7 +411,7 @@ def obtener_entregas(tarea_id):
         # Obtener todos los estudiantes y sus entregas
         cur.execute("""
             SELECT u.id, u.nombres, u.apellidos,
-                   e.nota, e.comentario, e.fecha_calificacion, e.estado
+                e.nota, e.comentario, e.fecha_calificacion, e.estado
             FROM usuarios u
             LEFT JOIN entregas e ON u.id = e.estudiante_id AND e.tarea_id = %s
             WHERE u.tipo = 'estudiante'
@@ -446,10 +446,10 @@ def obtener_tareas_estudiante():
         cur = mysql.connection.cursor()
         cur.execute("""
             SELECT t.*, 
-                   u.nombres as profesor_nombres, 
-                   u.apellidos as profesor_apellidos,
-                   e.nota, e.comentario, e.estado as estado_entrega,
-                   DATEDIFF(t.fecha_entrega, CURDATE()) as dias_restantes
+                u.nombres as profesor_nombres, 
+                u.apellidos as profesor_apellidos,
+                e.nota, e.comentario, e.estado as estado_entrega,
+                DATEDIFF(t.fecha_entrega, CURDATE()) as dias_restantes
             FROM tareas t
             LEFT JOIN usuarios u ON t.profesor_id = u.id
             LEFT JOIN entregas e ON t.id = e.tarea_id AND e.estudiante_id = %s
