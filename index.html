@@ -4,58 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colegio Miguel Grau - Registro de Usuario</title>
+    <title>Colegio Miguel Grau - Bienvenida</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/index.css">
+    <style>
+        .accesos-rapidos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .tarjeta-acceso {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #006442;
+        }
+
+        .tarjeta-acceso:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .tarjeta-acceso.estudiante {
+            border-top-color: #2196F3;
+        }
+
+        .tarjeta-acceso h3 {
+            color: #333;
+            margin: 15px 0;
+            font-size: 1.5em;
+        }
+
+        .tarjeta-acceso p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .icono-grande {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .btn-acceso {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #006442;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-acceso:hover {
+            background-color: #004d33;
+        }
+
+        .tarjeta-acceso.estudiante .btn-acceso {
+            background-color: #2196F3;
+        }
+
+        .tarjeta-acceso.estudiante .btn-acceso:hover {
+            background-color: #1976D2;
+        }
+
+        .seccion-info {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .info-box {
+            background: #f0f8f0;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #006442;
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            color: #006442;
+            margin-top: 0;
+        }
+    </style>
 </head>
 
 <body>
     <div id="header-placeholder"></div>
+    
     <main class="contenido-principal layout-landing">
-
-        <section class="hero-bienvenida" style="background-image: url('/images/landingimage.png');">
-            <h1>Bienvenidos al Colegio Internacional</h1>
-            <p>Formando líderes desde 1985.</p>
+        <section class="hero-bienvenida" style="background-image: url('./images/landingimage.png');">
+            <h1>Bienvenidos al Colegio Miguel Grau</h1>
+            <p>Formando líderes desde 1985</p>
             <a href="./pages/acercade.html" class="boton-primario">Conoce Más Sobre Nosotros</a>
         </section>
 
+        <section class="accesos-rapidos">
+            <div class="tarjeta-acceso">
+                <div class="icono-grande">👨‍🏫</div>
+                <h3>Profesores</h3>
+                <p>Gestiona tus clases, crea tareas y califica a tus estudiantes</p>
+                <a href="./login.html" class="btn-acceso">Acceso Profesores</a>
+            </div>
+
+            <div class="tarjeta-acceso estudiante">
+                <div class="icono-grande">👨‍🎓</div>
+                <h3>Estudiantes</h3>
+                <p>Revisa tus tareas, consulta tus calificaciones y mantente al día</p>
+                <a href="./login.html" class="btn-acceso">Acceso Estudiantes</a>
+            </div>
+        </section>
+
+        <section class="seccion-info">
+            <div class="info-box">
+                <h3>¿Primera vez aquí?</h3>
+                <p>Si aún no tienes una cuenta, puedes registrarte como:</p>
+                <ul style="list-style-position: inside;">
+                    <li><strong>Profesor:</strong> <a href="./pages/registro_profesor.html" style="color: #006442; font-weight: bold;">Regístrate aquí</a></li>
+                    <li><strong>Estudiante:</strong> <a href="./pages/registro_estudiante.html" style="color: #2196F3; font-weight: bold;">Regístrate aquí</a></li>
+                </ul>
+            </div>
+
+        </section>
     </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="contenedor-seleccion">
-            <button onclick="window.location.href='pages/registro_profesor.html'" class="btn-rol"> Profesor</button>
-            <button onclick="window.location.href='pages/registro_estudiante.html'" class="btn-rol"> Estudiante</button>
-        </div> -->
-    </main>
-    <!--piede pagina-->
     <div id="footer-placeholder"></div>
-    <script src="./javascript/control.js"></script>
+    <script src="./javascript/control_sistema.js"></script>
 </body>
 
 </html>

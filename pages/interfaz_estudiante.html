@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Estudiante - Colegio Miguel Grau</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/interfaz_estudiante.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-brand">
+                <span class="navbar-brand-icon">👨‍🎓</span>
+                <div>
+                    <h1 id="nombreEstudiante">Cargando...</h1>
+                    <p id="infoEstudiante">5to A - EST001</p>
+                </div>
+            </div>
+            <div class="navbar-user">
+                <div class="notification-bell">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar" id="userAvatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                    AE
+                </div>
+                <button class="btn-logout" id="btnCerrarSesion">
+                     Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- WELCOME CARD -->
+        <div class="welcome-card">
+            <div class="welcome-content">
+                <h2>¡Bienvenido de vuelta! </h2>
+                <p>Aquí están tus tareas y calificaciones más recientes</p>
+            </div>
+            <div class="welcome-illustration"></div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">📝</div>
+                <div class="stat-value" id="totalTareas">0</div>
+                <div class="stat-label">Tareas Totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon yellow">⏳</div>
+                <div class="stat-value" id="tareasPendientes">0</div>
+                <div class="stat-label">Pendientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">✅</div>
+                <div class="stat-value" id="tareasCalificadas">0</div>
+                <div class="stat-label">Calificadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon red">📊</div>
+                <div class="stat-value" id="promedioGeneral">0.0</div>
+                <div class="stat-label">Promedio</div>
+            </div>
+        </div>
+
+        <!-- INFO BOX -->
+        <div class="info-box">
+            <h4>Información Importante</h4>
+            <p>La funcionalidad para <strong>subir archivos de tareas</strong> estará disponible próximamente. Por ahora, puedes revisar tus tareas asignadas y consultar tus calificaciones.</p>
+        </div>
+
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <h3>Mis Tareas</h3>
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarTareas('todas')">
+                    Todas
+                </button>
+                <button class="filter-tab" onclick="filtrarTareas('pendientes')">
+                    Pendientes
+                </button>
+                <button class="filter-tab" onclick="filtrarTareas('calificadas')">
+                    Calificadas
+                </button>
+            </div>
+        </div>
+
+        <!-- TASKS CONTAINER -->
+        <div class="tasks-container" id="tareasContainer">
+            <!-- Las tareas se cargarán dinámicamente -->
+        </div>
+    </div>
+    <script src="../scripts/interfaz_estudiante.js"></script>
+</body>
+</html>

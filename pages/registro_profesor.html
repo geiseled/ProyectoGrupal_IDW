@@ -1,48 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Profesor - Colegio MIguel Grau</title>
-    <!--estilos personalizados-->
+    <title>Registro de Profesor - Colegio Miguel Grau</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/registro_profesor.css">
 </head>
-
 <body>
-    <!--header inyectado-->
     <div id="header-placeholder"></div>
 
-    <main class="contenido-principal">
-        <!--formulario-->
-        <form id="formProfesor" class="formulario"
-            onsubmit="alert('¡Registro de profesor enviado! (Simulación)'); return false;">
-            <label for="nombres">Nombres:</label>
-            <input type="text" id="nombres" name="nombres" required>
+    <div class="registro-container">
+        <div class="registro-card">
+            <div class="registro-header">
+                <div class="avatar-icon">👨‍🏫</div>
+                <h2>Registro de Profesor</h2>
+                <p>Crea tu cuenta para gestionar tus clases y estudiantes</p>
+            </div>
 
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" name="apellidos" required>
+            <div class="registro-body">
+                <div id="alertContainer"></div>
 
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" placeholder="Ej: 12345678" required>
+                <form id="formRegistroProfesor">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombres">Nombres</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="nombres" 
+                                    name="nombres" 
+                                    placeholder="Carlos Alberto"
+                                    required
+                                    autocomplete="given-name"
+                                >
+                            </div>
+                        </div>
 
-            <label for="correo">Correo Gmail:</label>
-            <input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" required>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="apellidos" 
+                                    name="apellidos" 
+                                    placeholder="Mendoza García"
+                                    required
+                                    autocomplete="family-name"
+                                >
+                            </div>
+                        </div>
+                    </div>
 
-            <label for="id">ID de Profesor:</label>
-            <input type="text" id="id" name="id" placeholder="Ej: PROF001" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="dni" 
+                                    name="dni" 
+                                    placeholder="12345678"
+                                    maxlength="8"
+                                    required
+                                    pattern="\d{8}"
+                                >
+                            </div>
+                            <p class="hint-text">Exactamente 8 dígitos</p>
+                        </div>
 
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="contrasena" required>
+                        <div class="form-group">
+                            <label for="id">ID de Profesor</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="id" 
+                                    name="id" 
+                                    placeholder="PROF001"
+                                    required
+                                    pattern="PROF\d{3,}"
+                                >
+                            </div>
+                            <p class="hint-text">Formato: PROF###</p>
+                        </div>
+                    </div>
 
-            <button type="submit" class="btn-enviar">Crear Cuenta</button>
-        </form>
-    </main>
-    <!--footer inyectado-->
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="email" 
+                                id="correo" 
+                                name="correo" 
+                                placeholder="ejemplo@gmail.com"
+                                required
+                                autocomplete="email"
+                            >
+                        </div>
+                        <p class="hint-text">Solo cuentas de Gmail</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="password" 
+                                id="contrasena" 
+                                name="contrasena" 
+                                placeholder="Mínimo 6 caracteres"
+                                required
+                                autocomplete="new-password"
+                            >
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="password-strength-bar"></div>
+                        </div>
+                        <p class="hint-text">Mínimo 6 caracteres, incluye números</p>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-text">Crear Cuenta de Profesor</span>
+                        <div class="loading-spinner"></div>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>o</span>
+                </div>
+
+                <div class="login-link">
+                    <p>¿Ya tienes una cuenta? <a href="../login.html">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="footer-placeholder"></div>
-    <script src="/javascript/control.js"></script>
-</body>
 
+    <script src="../javascript/control_sistema.js"></script>
+    <script src="../javascript/registro_profesor.js"></script>
+</body>
 </html>

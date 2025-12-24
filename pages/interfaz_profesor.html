@@ -1,70 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interfaz de Profesor - Colegio Miguel Grau</title>
+    <title>Dashboard Profesor - Colegio Miguel Grau</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <style>
-        /* Estilos para las secciones de la interfaz */
-        .seccion {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #006442;
-            border-radius: 6px;
-            background-color: #f9f9f9;
-        }
-        .seccion h2 {
-            color: #006442;
-        }
-        .lista-cursos, .lista-alumnos, .lista-trabajos {
-            list-style: none;
-            padding: 0;
-        }
-        .lista-cursos li, .lista-alumnos li, .lista-trabajos li {
-            padding: 5px 0;
-            border-bottom: 1px solid #ddd;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/interfaz_profesor.css">
 </head>
-
 <body>
-    <div id="header-placeholder"></div>
-    <main class="contenido-principal">
-        <div id="interfazProfesor">
-            <h1>Bienvenido, <span id="nombreProfesor"></span>!</h1>
-            
-            <div class="seccion">
-                <h2>Mis Cursos</h2>
-                <ul id="listaCursosDisplay" class="lista-cursos">
-                    <!-- Se llenará dinámicamente -->
-                </ul>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-brand">
+                <span style="font-size: 32px;">👨‍🏫</span>
+                <div>
+                    <h1 id="nombreProfesor">Cargando...</h1>
+                    <p style="font-size: 13px; opacity: 0.9;">Panel de Profesor</p>
+                </div>
             </div>
-
-            <div class="seccion">
-                <h2>Alumnos Registrados</h2>
-                <ul id="listaAlumnos" class="lista-alumnos">
-                    <li>Juan Pérez - ID: EST001</li>
-                    <li>María López - ID: EST002</li>
-                    <li>Carlos García - ID: EST003</li>
-                </ul>
-            </div>
-
-            <div class="seccion">
-                <h2>Trabajos Subidos</h2>
-                <ul id="listaTrabajos" class="lista-trabajos">
-                    <li>Tarea 1: Álgebra Básica - Subida el 01/10/2023</li>
-                    <li>Proyecto Final: Geometría - Subida el 15/10/2023</li>
-                </ul>
-                <button id="btnSubirTrabajo" class="btn-enviar">Subir Nuevo Trabajo (Simulado)</button>
+            <div class="navbar-user">
+                <div class="user-avatar" id="userAvatar">CP</div>
+                <button class="btn-logout" id="btnCerrarSesion">
+                     Cerrar Sesión
+                </button>
             </div>
         </div>
-    </main>
-    <div id="footer-placeholder"></div>
-    <script src="../javascript/control_profesor.js"></script>
-</body>
+    </nav>
 
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- STATISTICS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon purple">📚</div>
+                <div class="stat-info">
+                    <h3 id="totalTareas">0</h3>
+                    <p>Tareas Creadas</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">✅</div>
+                <div class="stat-info">
+                    <h3 id="tareasActivas">0</h3>
+                    <p>Tareas Activas</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">👥</div>
+                <div class="stat-info">
+                    <h3 id="totalEstudiantes">0</h3>
+                    <p>Estudiantes</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue">📊</div>
+                <div class="stat-info">
+                    <h3 id="calificaciones">0</h3>
+                    <p>Calificaciones Asignadas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab active" onclick="cambiarTab('crear')">
+                 Crear Tarea
+            </button>
+            <button class="tab" onclick="cambiarTab('tareas')">
+                 Mis Tareas
+            </button>
+        </div>
+
+        <!-- CREAR TAREA -->
+        <div class="content-section active" id="seccionCrear">
+            <div class="card">
+                <div class="card-header">
+                    <h2> Nueva Tarea</h2>
+                </div>
+                <form id="formCrearTarea">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="tituloTarea">Título de la Tarea *</label>
+                            <input 
+                                type="text" 
+                                id="tituloTarea" 
+                                placeholder="Ej: Ecuaciones Cuadráticas"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="cursoTarea">Curso *</label>
+                            <select id="cursoTarea" required>
+                                <option value="">Seleccionar curso...</option>
+                                <option value="Matemática">Matemática</option>
+                                <option value="Comunicación">Comunicación</option>
+                                <option value="Ciencia y Tecnología">Ciencia y Tecnología</option>
+                                <option value="Ciencias Sociales">Ciencias Sociales</option>
+                                <option value="Inglés">Inglés</option>
+                                <option value="Arte y Cultura">Arte y Cultura</option>
+                                <option value="Educación Física">Educación Física</option>
+                                <option value="Educación Religiosa">Educación Religiosa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoTarea">Tipo *</label>
+                            <select id="tipoTarea" required>
+                                <option value="tarea">Tarea</option>
+                                <option value="examen">Examen</option>
+                                <option value="proyecto">Proyecto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaEntrega">Fecha de Entrega *</label>
+                            <input type="date" id="fechaEntrega" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="descripcionTarea">Descripción *</label>
+                            <textarea 
+                                id="descripcionTarea" 
+                                placeholder="Describe la tarea, objetivos, criterios de evaluación..."
+                                required
+                            ></textarea>
+                        </div>
+                    </div>
+                    <div style="margin-top: 25px; text-align: right;">
+                        <button type="submit" class="btn btn-primary">
+                             Crear Tarea
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MIS TAREAS -->
+        <div class="content-section" id="seccionTareas">
+            <div class="tasks-grid" id="listaTareas">
+                <!-- Las tareas se cargarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CALIFICAR -->
+    <div class="modal" id="modalCalificar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2> Calificar Estudiantes</h2>
+                <button class="close-modal" onclick="cerrarModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="contenidoCalificacion"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/interfaz_profesor.js"></script>
+</body>
 </html>
