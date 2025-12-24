@@ -1,0 +1,100 @@
+# ============================================
+# GITIGNORE - Archivos Excluidos de Git
+# Sistema Educativo Colegio Miguel Grau
+# ============================================
+
+# Archivos de datos JSON (se generan automaticamente)
+data/*.json
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+.venv
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Configuracion local
+config.local.py
+.env
+.env.local
+
+# Archivos de Flask/MySQL (NO usados en este proyecto)
+*.db
+*.sqlite
+*.sql
+migrations/
+
+# Archivos de compilacion
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage y tests
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Documentos temporales
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+
+# Node modules (si en algun momento se usa npm)
+node_modules/
+package-lock.json
+
+# Archivos ZIP y comprimidos
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Certificados y claves
+*.pem
+*.key
+*.crt
+
+# Backups
+backup/
+*.backup
