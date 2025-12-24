@@ -1,5 +1,5 @@
 # Servidor HTTP para el Sistema de Gestion Educativa
-# Implementado con Python puro sin frameworks externos
+# Implementado con Python
 
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import json
@@ -167,7 +167,6 @@ class RequestHandler(SimpleHTTPRequestHandler):
         self.send_json_response({'exito': True, 'usuarios': usuarios_publicos}, 200)
     
     # Funciones auxiliares para servir archivos
-    
     def serve_static_file(self, path):
         if path.startswith('/'):
             path = path[1:]
@@ -211,7 +210,6 @@ class RequestHandler(SimpleHTTPRequestHandler):
         print(f"[{self.log_date_time_string()}] {format % args}")
 
 # Inicializacion del servidor
-
 def run_server():
     server_address = (HOST, PORT)
     httpd = HTTPServer(server_address, RequestHandler)
